@@ -1,0 +1,41 @@
+# Graph Representation
+graph = {
+    'A': ['B', 'C'],
+    'B': ['A', 'D', 'E'],
+    'C': ['A', 'F'],
+    'D': ['B'],
+    'E': ['B', 'F'],
+    'F': ['C', 'E']
+}
+
+# DFS (Depth First Search)
+def dfs(node, visited):
+    if node not in visited:
+        print(node, end=" ")
+        visited.add(node)
+
+        for neighbor in graph[node]:
+            dfs(neighbor, visited)
+
+# BFS (Breadth First Search)
+from collections import deque
+
+def bfs(start):
+    visited = set([start])
+    queue = deque([start])
+
+    while queue:
+        node = queue.popleft()
+        print(node, end=" ")
+
+        for neighbor in graph[node]:
+            if neighbor not in visited:
+                visited.add(neighbor)
+                queue.append(neighbor)
+
+# Main Program
+print("DFS Traversal:")
+dfs('A', set())
+
+print("\n\nBFS Traversal:")
+bfs('A')
