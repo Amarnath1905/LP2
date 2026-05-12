@@ -1,0 +1,67 @@
+# Kruskal's Minimum Spanning Tree Algorithm
+
+# List of edges: (weight, node1, node2)
+edges = [
+    (4, 0, 1),
+    (8, 0, 7),
+    (11, 1, 7),
+    (8, 1, 2),
+    (7, 2, 3),
+    (2, 2, 8),
+    (4, 2, 5),
+    (9, 3, 4),
+    (14, 3, 5),
+    (10, 4, 5),
+    (2, 5, 6),
+    (1, 6, 7),
+    (6, 6, 8),
+    (7, 7, 8)
+]
+
+parent = []
+
+# Find function
+def find(i):
+
+    while parent[i] != i:
+        i = parent[i]
+
+    return i
+
+# Union function
+def union(x, y):
+
+    parent[x] = y
+
+# Number of vertices
+n = 9
+
+# Initialize parent array
+for i in range(n):
+    parent.append(i)
+
+# Sort edges by weight
+edges.sort()
+
+print("Edge : Weight")
+
+count = 0
+i = 0
+
+# MST contains n-1 edges
+while count < n - 1:
+
+    weight, u, v = edges[i]
+    i += 1
+
+    x = find(u)
+    y = find(v)
+
+    # Check cycle
+    if x != y:
+
+        print(u, "-", v, ":", weight)
+
+        union(x, y)
+
+        count += 1
