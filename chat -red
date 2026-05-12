@@ -1,0 +1,44 @@
+# Elementary Chatbot for REDBUS Customer Interaction
+
+def redbus_chatbot():
+
+    print("Welcome to REDBUS Chatbot")
+    print("Type 'bye' to exit\n")
+
+    while True:
+
+        user = input("You: ").lower()
+
+        if user == "hello" or user == "hi":
+            print("Bot: Hello! Welcome to REDBUS.")
+
+        elif "book" in user:
+            print("Bot: You can book bus tickets on the REDBUS website or app.")
+
+        elif "cancel" in user:
+            print("Bot: To cancel your ticket, go to 'My Bookings' and select cancel ticket.")
+
+        elif "payment" in user:
+            print("Bot: We support UPI, Debit Card, Credit Card, and Net Banking.")
+
+        elif "offers" in user:
+            print("Bot: Current offers: 10% cashback on first booking.")
+
+        elif "timing" in user:
+            print("Bot: Please enter your source and destination to check bus timings.")
+
+        elif "refund" in user:
+            print("Bot: Refund will be processed within 5-7 working days.")
+
+        elif "contact" in user:
+            print("Bot: You can contact customer care at 1800-123-456.")
+
+        elif user == "bye":
+            print("Bot: Thank you for using REDBUS Chatbot. Goodbye!")
+            break
+
+        else:
+            print("Bot: Sorry, I don't understand your query.")
+
+# Run chatbot
+redbus_chatbot()
