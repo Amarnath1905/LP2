@@ -1,0 +1,45 @@
+# Greedy Search Algorithm
+
+graph = {
+    'A': [('B', 4), ('C', 3)],
+    'B': [('D', 5), ('E', 12)],
+    'C': [('F', 7)],
+    'D': [],
+    'E': [],
+    'F': []
+}
+
+heuristic = {
+    'A': 10,
+    'B': 8,
+    'C': 5,
+    'D': 7,
+    'E': 2,
+    'F': 0
+}
+
+visited = []
+
+def greedy_search(start, goal):
+
+    current = start
+    visited.append(current)
+
+    while current != goal:
+
+        neighbors = graph[current]
+
+        if not neighbors:
+            print("Goal not reachable")
+            return
+
+        # Select neighbor with minimum heuristic value
+        next_node = min(neighbors, key=lambda x: heuristic[x[0]])
+
+        current = next_node[0]
+
+        visited.append(current)
+
+    print("Path Followed:", visited)
+
+greedy_search('A', 'F')
